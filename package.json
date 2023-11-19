@@ -1,0 +1,26 @@
+{
+  "name": "topgpts.club@/GPTS-Crawler-DataSet",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "GPTS-Crawler-DataSet",
+  "dependencies": {
+    "node-fetch": "^3.3.2",
+    "playwright": "*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "ts-node": "^10.8.0",
+    "typescript": "^5.0.0"
+  },
+  "scripts": {
+    "start": "npm run start:dev",
+    "deduplicate-gpts": "node --no-warnings=ExperimentalWarning --loader ts-node/esm/transpile-only src/deduplicate-gpts.ts",
+    "deduplicate-urls": "node --no-warnings=ExperimentalWarning --loader ts-node/esm/transpile-only src/deduplicate-urls.ts",
+    "issue": "node --no-warnings=ExperimentalWarning --loader ts-node/esm/transpile-only src/issue.ts",
+    "start:prod": "node dist/main.js",
+    "start:dev": "node --no-warnings=ExperimentalWarning --loader ts-node/esm/transpile-only src/main.ts",
+    "build": "tsc"
+  },
+  "author": "AhaApple",
+  "license": "Apache 2.0"
+}
