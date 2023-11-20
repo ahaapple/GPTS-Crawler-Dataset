@@ -6,5 +6,5 @@
     "noUnusedLocals": false,
     "lib": ["DOM"]
   },
-  "include": ["./src/**/*", "./config.ts"]
+  "include": ["./src/**/*"]
 }

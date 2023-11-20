@@ -9,20 +9,12 @@ async function deduplicateJsonl(filePath: string): Promise<void> {
   });
 
   const uniqueIds = new Set<string>();
-  const uniqueUrls: string[] = [];
 
   let lineCount = 0;
   for await (const line of rl) {
     lineCount++;
     try {
-      const match = line.match(/g-\w+/);
-      if (match) {
-        const id = match[0];
-        if (!uniqueIds.has(id)) {
-          uniqueIds.add(id);
-          uniqueUrls.push(line);
-        }
-      }
+      uniqueIds.add(line);
     } catch (e) {
       console.error('Error parsing line:', line, e);
     }
@@ -31,9 +23,11 @@ async function deduplicateJsonl(filePath: string): Promise<void> {
   fileStream.close();
   rl.close();
 
-  console.log('original lines', lineCount, 'unique Lines', uniqueUrls.length);
+  const sortedUniqueIds = Array.from(uniqueIds).sort().join('\n');
 
-  fs.writeFileSync(filePath, uniqueUrls.join('\n'), 'utf8');
+  console.log('original lines', lineCount, 'unique Lines', uniqueIds.size);
+
+  fs.writeFileSync(filePath, sortedUniqueIds, 'utf8');
   console.log(`Deduplication complete. Unique items saved to ${filePath}`);
 }
 

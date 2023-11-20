@@ -2,6 +2,7 @@
 
 1. 从互联网各种渠道获取每个 GPTs的详细元数据
 2. 将获取到的 GPTS 数据集公开
+3. 支持通过 Google 搜索获取 GPTs的详细元数据
 
 https://www.topgpts.club/
 
@@ -15,6 +16,7 @@ https://www.topgpts.club/
 - 抓取成功率极高
 - 支持异常重试
 - 支持断点续传
+- 支持 Google 搜索抓取
 
 ## GPTS 数据集
 
@@ -99,22 +101,14 @@ npm start
 
 6. 抓取的新的 gpts 元数据 会追加到 gizmos.jsonl 文件中
 
-## 抓取 github issue comment
+## 从 google 获取 gpts urls
 
-先在 issue 文件中 修改以下配置：
-
-```
-const owner = 'airyland';
-const repo = 'gptshunter.com';
-const issueNumber = 1;
-// you could get your token refer to  https://docs.github.com/en/enterprise-server@3.6/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens
-const token = 'your github token';
-```
+更新 keyword-list 文件
 
 然后执行
 
 ```
-npm run issue
+npm run google
 ```
 
 ## gpts-urls 文件去重
@@ -136,6 +130,7 @@ npm run deduplicate-gpts
 1. https://github.com/ahaapple/GPTS-Crawler-Dataset/issues/1  在 issue 中 comment 你的 gpts url
 2. 直接更新 gpts-url-list 文件增加你的 gpts url
 3. 直接更新 gizmos.jsonl 文件增加你抓取后的元数据
+4. 直接更新 keywork-list 文件增加 google 搜索关键词
 
 ## Roadmap
 

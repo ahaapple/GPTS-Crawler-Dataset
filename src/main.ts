@@ -13,7 +13,7 @@ function sleep(ms: number): Promise<void> {
             if (line) {
                 const gizmo = JSON.parse(line);
                 if (gizmo && gizmo.id) {
-                    processedIds.add(gizmo.id);
+                    processedIds.add(gizmo.id.slice(2));
                 }
             }
         });
@@ -28,23 +28,23 @@ function sleep(ms: number): Promise<void> {
 
     const outputStream = fs.createWriteStream('gizmos.jsonl', { flags: 'a' });
 
-    for (const url of lines) {
 
-        const match = url.match(/g-\w+/);
-        if (match && processedIds.has(match[0])) {
+    for (const url of lines) {
+        if (processedIds.has(url)) {
             console.log('Skipping already processed URL:', url);
             continue;
         }
 
         let attempts = 2;
         while (attempts > 0) {
-            console.log('Processing URL :', url);
+            // In order to process real-person detection
             const browser = await chromium.launch(
                 { headless: false, slowMo: 50 }
             );
+            console.log('Processing URL :', url);
             try {
                 const page = await browser.newPage();
-                await page.goto(url);
+                await page.goto(`https://chat.openai.com/g/g-${url}`);
                 await page.waitForLoadState('networkidle');
 
                 const propsString = await page.evaluate(() => {
@@ -60,12 +60,10 @@ function sleep(ms: number): Promise<void> {
                 if (propsString) {
                     const props = JSON.parse(propsString);
                     const gizmo = props['props']['pageProps']['gizmo']['gizmo'];
-                    outputStream.write(JSON.stringify(gizmo) + '\n');
-                    // console.log('Successfully Processed URL :', url);
+                    outputStream.write('\n' + JSON.stringify(gizmo));
+                    console.log('Successfully Processed URL :', url);
                 }
 
-                await browser.close();
-                sleep(2000);
                 break;
             } catch (e) {
                 console.error('Error processing URL:', url, e);
@@ -75,6 +73,8 @@ function sleep(ms: number): Promise<void> {
                 } else {
                     console.log('All retry attempts failed,', url);
                 }
+
+            } finally {
                 await browser.close();
                 await sleep(2000);
             }
