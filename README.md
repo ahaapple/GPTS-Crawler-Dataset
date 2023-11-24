@@ -1,22 +1,25 @@
-#GPTS-Crawler-DataSet
+# GPTS-Crawler-DataSet
 
-1. Obtain detailed metadata of each GPTs from various channels on the Internet
-2. Make the obtained GPTS data set public
-3. Supports obtaining detailed metadata of GPTs through Google search
+1. Obtain detailed metadata of each gpts from various sources on the Internet
+2. Make the obtained gpts data set public
+3. Support obtaining detailed metadata of gpts through Google search
+4. Support obtaining detailed metadata of gpts through Github
 
-https://www.topgpts.club/
+<https://www.topgpts.club/>
 
 ## README.md
 
-- en [English](README.md)
+-en [English](README.md)
+
 - zh_CN [Simplified Chinese](README.zh_CN.md)
 
 ## Features
 
 - High crawl success rate
 - Support exception retry
-- Support breakpoint resume download
+-Support breakpoint resume download
 - Support Google search crawling
+-Support Github crawling
 
 ## GPTS data set
 
@@ -75,7 +78,6 @@ Each line is the metadata of a complete GPTs, in the following format:
 
 1. Please make sure Node.js >= 16 is installed
 
-
 2. Clone project
 
 ```
@@ -91,7 +93,6 @@ npx playwright install
 ```
 
 4. Update gpts-url-list file
-
 
 5. Grab gpts metadata
 
@@ -111,6 +112,12 @@ and then execute
 npm run google
 ```
 
+## Get gpts urls from github
+
+```
+npm run github
+```
+
 ## gpts-urls file deduplication
 
 ```
@@ -127,7 +134,7 @@ npm run deduplicate-gpts
 
 Everyone is welcome to build the GPTS public data set together. You can choose the following methods to build it:
 
-1. https://github.com/ahaapple/GPTS-Crawler-Dataset/issues/1 Comment your gpts url in the issue
+1. <https://github.com/ahaapple/GPTS-Crawler-Dataset/issues/1> Comment your gpts url in the issue
 2. Directly update the gpts-url-list file to add your gpts url
 3. Directly update the gizmos.jsonl file to add your crawled metadata
 4. Directly update the keywork-list file to add google search keywords
@@ -139,6 +146,6 @@ Everyone is welcome to build the GPTS public data set together. You can choose t
 
 ## Thanks To
 
-1. gpts-works: https://github.com/all-in-aigc/gpts-works
-2. gptshunter issue data source: https://github.com/airyland/gptshunter.com/issues/1
-3. GPTHub data source: https://github.com/lencx/GPTHub/blob/main/gpthub.json
+1. gpts-works: <https://github.com/all-in-aigc/gpts-works>
+2. gptshunter issue data source: <https://github.com/airyland/gptshunter.com/issues/1>
+3. GPTHub data source: <https://github.com/lencx/GPTHub/blob/main/gpthub.json>

@@ -1,8 +1,9 @@
 # GPTS-Crawler-DataSet
 
-1. 从互联网各种渠道获取每个 GPTs的详细元数据
-2. 将获取到的 GPTS 数据集公开
-3. 支持通过 Google 搜索获取 GPTs的详细元数据
+1. 从互联网各种渠道获取每个 gpts 的详细元数据
+2. 将获取到的 gpts 据集公开
+3. 支持通过 Google 搜索获取 gpts 的详细元数据
+4. 支持通过 Github 获取 gpts 的详细元数据
 
 https://www.topgpts.club/
 
@@ -17,6 +18,7 @@ https://www.topgpts.club/
 - 支持异常重试
 - 支持断点续传
 - 支持 Google 搜索抓取
+- 支持 Github 抓取
 
 ## GPTS 数据集
 
@@ -111,6 +113,13 @@ npm start
 npm run google
 ```
 
+## 从 github 获取 gpts urls
+
+```
+npm run github
+```
+
+
 ## gpts-urls 文件去重
 
 ```
@@ -143,4 +152,3 @@ npm run deduplicate-gpts
 1. gpts-works: https://github.com/all-in-aigc/gpts-works
 2. gptshunter issue 数据源: https://github.com/airyland/gptshunter.com/issues/1
 3. GPTHub 数据源: https://github.com/lencx/GPTHub/blob/main/gpthub.json
-
