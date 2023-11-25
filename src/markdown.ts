@@ -21,7 +21,7 @@ const extractUrls: ExtractUrlsFunction = async (dir) => {
                 .filter(id => id !== null);
 
             for (const url of openaiUrls) {
-                await fs.appendFile('gpts-url-list', url + '\n', 'utf-8');
+                await fs.appendFile('gpts-url-list', '\n' + url, 'utf-8');
             }
 
             if (openaiUrls.length > 0) {
