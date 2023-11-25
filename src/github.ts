@@ -5,9 +5,8 @@ function sleep(ms: number): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-
 (async () => {
-    const lines = ['https://github.com/Anil-matcha/Awesome-GPT-Store'];
+    const lines = ['https://github.com/dariubs/awesome-gpts'];
     for (const url of lines) {
         let attempts = 2;
         while (attempts > 0) {

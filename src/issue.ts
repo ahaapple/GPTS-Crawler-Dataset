@@ -1,5 +1,5 @@
 import fetch from 'node-fetch';
-import { writeFile } from 'fs/promises';
+import * as fs from 'fs';
 
 interface Comment {
     id: number;
@@ -59,8 +59,16 @@ function extractUrls(comments: Comment[]): string[] {
 }
 
 async function writeUrlsToFile(urls: string[], filePath: string): Promise<void> {
-    const data = urls.join('\n');
-    await writeFile(filePath, data);
+    const openaiUrls = urls
+        .filter(url => /^https:\/\/chat\.openai\.com\/g\/g-/.test(url))
+        .map(url => {
+            const match = url.match(/g-([a-zA-Z0-9]{9})/);
+            return match ? match[1] : null;
+        })
+        .filter(id => id !== null);
+    for (const url of openaiUrls) {
+        fs.appendFileSync(filePath, '\n' + url, 'utf-8');
+    }
 }
 
 const owner = 'airyland';
@@ -73,7 +81,7 @@ fetchIssueComments(owner, repo, issueNumber, token)
     .then(comments => {
         if (comments) {
             const urls = extractUrls(comments);
-            return writeUrlsToFile(urls, 'urls.txt');
+            return writeUrlsToFile(urls, 'gpts-url-list');
         }
     })
     .catch(error => console.error(error));
