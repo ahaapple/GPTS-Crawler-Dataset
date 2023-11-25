@@ -1,4 +1,4 @@
-# gpts store and gpts crawler
+# 10000+ gpts store and gpts crawler
 
 1. Obtain detailed metadata of each gpts from various sources on the Internet
 2. Make the obtained gpts data set public
