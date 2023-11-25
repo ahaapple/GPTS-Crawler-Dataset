@@ -1,4 +1,4 @@
-# GPTS-Crawler-DataSet
+# gpts store and gpts crawler
 
 1. 从互联网各种渠道获取每个 gpts 的详细元数据
 2. 将获取到的 gpts 据集公开

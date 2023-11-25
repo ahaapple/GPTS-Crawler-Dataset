@@ -1,4 +1,4 @@
-# GPTS-Crawler-DataSet
+# gpts store and gpts crawler
 
 1. Obtain detailed metadata of each gpts from various sources on the Internet
 2. Make the obtained gpts data set public
@@ -9,7 +9,7 @@
 
 ## README.md
 
--en [English](README.md)
+- en [English](README.md)
 
 - zh_CN [Simplified Chinese](README.zh_CN.md)
 
@@ -17,9 +17,9 @@
 
 - High crawl success rate
 - Support exception retry
--Support breakpoint resume download
+- Support breakpoint resume download
 - Support Google search crawling
--Support Github crawling
+- Support Github crawling
 
 ## GPTS data set
 
