@@ -146,6 +146,7 @@ Everyone is welcome to build the GPTS public data set together. You can choose t
 
 ## Thanks To
 
-1. gpts-works: <https://github.com/all-in-aigc/gpts-works>
-2. gptshunter issue data source: <https://github.com/airyland/gptshunter.com/issues/1>
-3. GPTHub data source: <https://github.com/lencx/GPTHub/blob/main/gpthub.json>
+1. Hybird AI search: https://github.com/memfreeme/memfree
+2. gpts-works: <https://github.com/all-in-aigc/gpts-works>
+3. gptshunter issue data source: <https://github.com/airyland/gptshunter.com/issues/1>
+4. GPTHub data source: <https://github.com/lencx/GPTHub/blob/main/gpthub.json>
